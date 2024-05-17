@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from utils.has_url_in_text import has_url_in_text
 from utils.get_content_by_url import get_content_by_url
 from utils.summarize_text_by_openai import summarize_text
+from utils.insert_notion import insert_notion
 
 load_dotenv()
 DISCORD_API_KEY = os.getenv("DISCORD_API_KEY")
@@ -34,6 +35,10 @@ async def on_message(message):
             )
             await thread.send(ogp_url)
             await thread.send(f"# 要約\n{summary}")
+
+            # ここにNotionに追加する処理を追加する
+            await insert_notion(title, url, ogp_url, summary)
+
         except Exception as e:
             print(f"Error creating thread: {e}")
             return
