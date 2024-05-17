@@ -26,8 +26,8 @@ async def on_message(message):
         return
     if url := has_url_in_text(message.content):
         try:
-            title, ogp_url, body_text = get_content_by_url(url)
-            summary = summarize_text(body_text)
+            title, ogp_url, body_text = await get_content_by_url(url)
+            summary = await summarize_text(body_text)
             return_message = message
             return_message.content = ogp_url
             thread = await message.channel.create_thread(
