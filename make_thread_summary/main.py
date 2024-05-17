@@ -29,7 +29,7 @@ async def on_message(message):
             title, ogp_url, body_text = get_content_by_url(url)
             summary = summarize_text(body_text)
             return_message = message
-            return_message.content = f"タイトル: {title}\n要約: {summary}"
+            return_message.content = ogp_url
             thread = await message.channel.create_thread(
                 name=f"{str(title)}の議論スレッド",
                 message=return_message,

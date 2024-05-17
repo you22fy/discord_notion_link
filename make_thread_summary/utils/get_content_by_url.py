@@ -14,16 +14,30 @@ def get_content_by_url(url: str):
     tuple
         ページのタイトル, OGP画像のURL, ページのテキスト
     """
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
-    title = soup.title.string
-    ogp_link = soup.find("meta", property="og:image")["content"]
-    text = soup.get_text()
-    return (title, ogp_link, text)
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, "html.parser")
+        if soup is None:
+            raise Exception("soup is None. Failed to parse HTML.")
+
+        title = soup.title if soup.title else ""
+        ogp_link = (
+            soup.find("meta", property="og:image")["content"] if soup.title else ""
+        )
+
+        text = soup.get_text()
+        return (
+            title,
+            ogp_link,
+            text,
+        )
+
+    except Exception as e:
+        return (f"Error in get_content_by_url: {e}", "", "")
 
 
 if __name__ == "__main__":
-    url = "https://qiita.com/Yu_unI1/items/af76bcf4ca655239ed6d"
+    url = "https://platform.openai.com/docs/api-reference/chat/object"
     title, ogp, text = get_content_by_url(url)
     print(title)
     print(ogp)
