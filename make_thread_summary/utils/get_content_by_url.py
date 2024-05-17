@@ -25,7 +25,7 @@ async def get_content_by_url(url: str):
         if len(text) < 100:
             raise Exception("text is too short. Probably not a valid article.")
 
-        title = soup.title if soup.title else ""
+        title = soup.title.string if soup.title else ""
         ogp_link = (
             soup.find("meta", property="og:image")["content"]
             if soup.find("meta", property="og:image")
@@ -43,7 +43,7 @@ async def get_content_by_url(url: str):
 
 
 async def main():
-    url = "https://medium.com/dartlang/dart-3-4-bd8d23b4462a"
+    url = "https://ai.google.dev/competition?hl=ja"
     title, ogp, text = await get_content_by_url(url)
     print(title)
     print(ogp)
