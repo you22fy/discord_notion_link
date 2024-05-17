@@ -61,12 +61,14 @@ async def summarize_text(text):
 
         return response.choices[0].message.content + meta_info
     except Exception as e:
-        return f"要約時エラー: {e}"
+        raise Exception(f"要約時エラー: {e}")
+
 
 async def main():
     sample_text = "Python is a programming language that lets you work quickly and integrate systems more effectively."
     summary = await summarize_text("")
     print(summary)
+
 
 if __name__ == "__main__":
     asyncio.run(main())

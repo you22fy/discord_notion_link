@@ -39,7 +39,7 @@ async def get_content_by_url(url: str):
         )
 
     except Exception as e:
-        return (f"Error in get_content_by_url: {e}", "", "")
+        raise Exception(f"Error in get_content_by_url: {e}")
 
 
 async def main():
