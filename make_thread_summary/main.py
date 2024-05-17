@@ -28,12 +28,11 @@ async def on_message(message):
         try:
             title, ogp_url, body_text = await get_content_by_url(url)
             summary = await summarize_text(body_text)
-            return_message = message
-            return_message.content = ogp_url
             thread = await message.channel.create_thread(
                 name=f"{str(title)}の議論スレッド"[:100],
-                message=return_message,
+                message=message,
             )
+            await thread.send(ogp_url)
             await thread.send(f"# 要約\n{summary}")
         except Exception as e:
             print(f"Error creating thread: {e}")
