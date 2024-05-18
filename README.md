@@ -1,6 +1,10 @@
 # discord_notion_link
 個人利用するためのDiscordとNotionを連携するためのBotです。
 
+
+https://github.com/you22fy/discord_notion_link/assets/93398385/7716ac0e-1a9a-4e48-96b2-edd44811d276
+
+
 ## 使用技術
 - python
 - discord.py
