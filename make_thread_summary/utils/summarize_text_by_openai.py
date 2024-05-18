@@ -40,11 +40,7 @@ async def summarize_text(text):
             messages=[
                 {
                     "role": "system",
-                    "content": "あなたは与えられたテキストを要約するAIです。",
-                },
-                {
-                    "role": "system",
-                    "content": "これからユーザーがテキストを入力します。そのテキストを日本語で要約してください",
+                    "content": system_prompt,
                 },
                 {
                     "role": "user",
