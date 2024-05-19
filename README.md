@@ -4,6 +4,9 @@
 
 https://github.com/you22fy/discord_notion_link/assets/93398385/7716ac0e-1a9a-4e48-96b2-edd44811d276
 
+## Qiita
+こちらのbotの制作に関してQiitaに記事を書いています。
+https://qiita.com/Yu_unI1/items/e503a9dd2ab6a252d2f4
 
 ## 使用技術
 - python
