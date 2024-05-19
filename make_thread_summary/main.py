@@ -25,6 +25,10 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+    if "pass" in message.channel.name:
+        print("here")
+        return
+
     if url := has_url_in_text(message.content):
         try:
             title, ogp_url, body_text = await get_content_by_url(url)
